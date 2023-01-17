@@ -13,7 +13,8 @@ var choicesContainer = document.querySelector("#choices")
 var listElements = document.querySelectorAll("li")
 var endElement = document.querySelector("#end-screen")
 var startScreenElement = document.querySelector("#start-screen")
-var finalScrore = document.querySelector("#final-score")
+var finalScore = document.querySelector("#final-score")
+var submitButton = document.querySelector("#submit")
 
 //Array containinq questions
 var questions = [
@@ -66,7 +67,7 @@ function endGame() {
     endElement.setAttribute('class', 'visible');
     startScreenElement.setAttribute('class', 'hide');
     questionsContainer.setAttribute('class', 'hide');
-    finalScrore.innerHTML = localStorage.getItem("count");
+    finalScore.innerHTML = localStorage.getItem("count");
 
 }
 
@@ -118,8 +119,13 @@ function nextQuestion() {
     if (questionsCounter < questions.length) {
         populateQuestion(questions[questionsCounter]);
     } else {
-        endGame();
+        endGame(timer);
+        clearInterval(timer)
     }
 }
 
-
+submitButton.addEventListener("click", function(){
+    var userScore = counter
+    var userInitials = document.getElementById("initials").value
+    console.log(userScore, userInitials)
+})
