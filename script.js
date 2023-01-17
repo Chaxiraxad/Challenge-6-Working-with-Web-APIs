@@ -125,7 +125,7 @@ function nextQuestion() {
 }
 
 submitButton.addEventListener("click", function(){
-    var userScore = counter
+    var userScore = storedScore
     var userInitials = document.getElementById("initials").value
     console.log(userScore, userInitials)
 })
