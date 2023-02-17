@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Highscores</title>
 
-    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
 
   <body>
@@ -14,10 +14,40 @@
       <h1>Highscores</h1>
       <ol id="highscores"></ol>
 
+      <div>
+        <h1>Your initials:</h1>
+        <p id="nameInitials"></p>
+        <h1>Your Last Score:</h1>
+        <p id="finalScores"></p>
+        <h1>Previous Scores:</h1>
+        <p id="previousScores"></p>
+      </div>
+
       <a href="index.html"><button>Go Back</button></a>
       <button id="clear">Clear Highscores</button>
     </div>
 
     <script src="./script.js"></script>
+    <script>
+     
+      document.addEventListener("DOMContentLoaded", function(event) { 
+        //Take values from localStorage
+        var storedScores = localStorage.getItem("count");
+        var totalScore = localStorage.getItem("lastScore");
+        var nameInitials = localStorage.getItem("initials");
+
+        //Take DOM elements
+        var initials = document.getElementById("nameInitials")
+        var finalScores = document.getElementById("finalScores")
+        var oldScores = document.getElementById("previousScores")
+        
+       //Append values
+        var oldScores = document.getElementById("previousScores")
+        oldScores.innerText = storedScores
+        finalScores.innerText = totalScore
+        initials.innerText = nameInitials
+});
+    
+    </script>
   </body>
 </html>

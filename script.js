@@ -2,7 +2,9 @@
 var counter = 100
 var timer;
 var questionsCounter = 0;
-var storedScore = localStorage.getItem("count");
+var storedScore = 0
+
+
 
 //DOM elements
 var startButton = document.querySelector('#start');
@@ -16,7 +18,7 @@ var startScreenElement = document.querySelector("#start-screen")
 var finalScore = document.querySelector("#final-score")
 var submitButton = document.querySelector("#submit")
 
-//Array containinq questions
+//Array containing questions
 var questions = [
     {
         title: "Inside which HTML element do we put the JavaScript?",
@@ -67,7 +69,7 @@ function endGame() {
     endElement.setAttribute('class', 'visible');
     startScreenElement.setAttribute('class', 'hide');
     questionsContainer.setAttribute('class', 'hide');
-    finalScore.innerHTML = localStorage.getItem("count");
+    finalScore.innerHTML = storedScore
 
 }
 
@@ -105,7 +107,6 @@ function checkChoiceValidity(choiceValue) {
     if (choiceValue == "true") {
         console.log("You are right")
         storedScore++
-        localStorage.setItem("count", storedScore);
         nextQuestion()
     } else {
         console.log("You are wrong")
@@ -125,7 +126,8 @@ function nextQuestion() {
 }
 
 submitButton.addEventListener("click", function(){
-    var userScore = storedScore
     var userInitials = document.getElementById("initials").value
-    console.log(userScore, userInitials)
+    localStorage.setItem("lastScore", storedScore);
+    localStorage.setItem("initials", userInitials);
 })
+
