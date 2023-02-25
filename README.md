@@ -15,13 +15,13 @@ The quiz should end when all questions are answered or the timer reaches 0.
 
 
 ## Installation
- git clone (git@github.com:Chaxiraxad/Challenge-6-Working-with-Web-APIs.git)
+[git clone](git@github.com:Chaxiraxad/Challenge-6-Working-with-Web-APIs.git)
 
 
 ## Deployment
-[Project Link] (https://chaxiraxad.github.io/Module-3-Challenge/)
+[Project Link](https://chaxiraxad.github.io/Working-with-Web-APIs/)
 
-(ScreenShot) ![Module-6-Working-with-Web-APIs deployed website](./Images/Module3Challenge_deployed.jpg)
+(ScreenShot) ![Module-6-Working-with-Web-APIs deployed website](./deployed%20web.png)
 
 ## Usage
 N/A
