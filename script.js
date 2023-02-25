@@ -3,6 +3,7 @@ var counter = 100
 var timer;
 var questionsCounter = 0;
 var storedScore = 0
+var olderScores = []
 
 
 
@@ -17,6 +18,7 @@ var endElement = document.querySelector("#end-screen")
 var startScreenElement = document.querySelector("#start-screen")
 var finalScore = document.querySelector("#final-score")
 var submitButton = document.querySelector("#submit")
+
 
 //Array containing questions
 var questions = [
@@ -43,6 +45,8 @@ var questions = [
 
 //Click event for "start" button
 startButton.addEventListener('click', function () {
+    //Verify if older scores exist in localStorage and save them in olderScores
+    olderScores = JSON.parse(localStorage.getItem('older-scores')) || []; 
 
     startButton.setAttribute('class', 'hide');
     questionsContainer.setAttribute('class', 'visible');
@@ -111,6 +115,7 @@ function checkChoiceValidity(choiceValue) {
     } else {
         console.log("You are wrong")
         counter = counter - 10
+        nextQuestion()
     }
 }
 
@@ -127,7 +132,14 @@ function nextQuestion() {
 
 submitButton.addEventListener("click", function(){
     var userInitials = document.getElementById("initials").value
-    localStorage.setItem("lastScore", storedScore);
-    localStorage.setItem("initials", userInitials);
+
+    //Save all required content in localStorage
+    olderScores.push(storedScore)
+    localStorage.setItem('older-scores', JSON.stringify(olderScores));
+    localStorage.setItem("lastScore", JSON.stringify(storedScore) );
+    localStorage.setItem("initials", JSON.stringify(userInitials) );   
+   
 })
+
+
 

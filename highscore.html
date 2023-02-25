@@ -12,9 +12,9 @@
   <body>
     <div class="wrapper">
       <h1>Highscores</h1>
-      <ol id="highscores"></ol>
+  
 
-      <div>
+      <div id="final-scores">
         <h1>Your initials:</h1>
         <p id="nameInitials"></p>
         <h1>Your Last Score:</h1>
@@ -29,25 +29,17 @@
 
     <script src="./script.js"></script>
     <script>
-     
-      document.addEventListener("DOMContentLoaded", function(event) { 
-        //Take values from localStorage
-        var storedScores = localStorage.getItem("count");
-        var totalScore = localStorage.getItem("lastScore");
-        var nameInitials = localStorage.getItem("initials");
+    //Needed variables
+    var previousScoresTitle = document.querySelector("#previousScores")
+    var userInitials = document.querySelector("#nameInitials")
+    var latestScore = document.querySelector("#finalScores")
 
-        //Take DOM elements
-        var initials = document.getElementById("nameInitials")
-        var finalScores = document.getElementById("finalScores")
-        var oldScores = document.getElementById("previousScores")
-        
-       //Append values
-        var oldScores = document.getElementById("previousScores")
-        oldScores.innerText = storedScores
-        finalScores.innerText = totalScore
-        initials.innerText = nameInitials
+    //Append correct values to DOM element when the page loads
+   document.addEventListener("DOMContentLoaded", function(event) { 
+    userInitials.textContent = JSON.parse(localStorage.getItem('initials'))
+    latestScore.textContent =  JSON.parse(localStorage.getItem('lastScore'))
+    previousScoresTitle.textContent = JSON.parse(localStorage.getItem('older-scores'))   
 });
-    
     </script>
   </body>
 </html>
